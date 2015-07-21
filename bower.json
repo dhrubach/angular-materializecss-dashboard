@@ -1,0 +1,29 @@
+{
+  "name": "angular-materializecss-dashboard",
+  "version": "0.0.1",
+  "homepage": "https://github.com/dhrubach/angular-materializecss-dashboard",
+  "authors": [
+    "Dhruba Chatterjee <dhrubach@hotmail.com>"
+  ],
+  "description": "an angular app using materialize css with grunt task runner and karma",
+  "keywords": [
+    "angular",
+    "materializecss",
+    "materialize"
+  ],
+  "private": true,
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.3",
+    "materialize": "~0.97.0",
+    "jquery": "^2.1.x"
+  }
+}
