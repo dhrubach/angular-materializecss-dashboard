@@ -1,0 +1,22 @@
+.page-banner,html{position:relative}
+html{min-height:100%}
+/*! nav bar */
+#logo-container{display:inline-block;margin:0 10px;width:70px;height:100%}
+#logo-container img{padding:5px 10px;height:100%;opacity:.8;border-radius:100%}
+/*! hero banner */
+.page-banner{background-repeat:no-repeat;background-image:url(../../assets/images/banner.JPG);background-size:100% auto;width:100%;height:465px;opacity:.7}
+.page-banner .container{height:100%}
+.page-banner .container .caption{position:absolute;top:50%;width:50%}
+/*! tab content - Teams*/
+.extra-small{height:300px}
+.extra-small .club-logo{position:relative;height:75%}
+.extra-small .club-logo img{width:100%;height:100%}
+.extra-small .club-logo-wrapper{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center}
+.extra-small .club-info{padding:10px 5px 5px}
+.extra-small .club-info .club-info-title{font-size:18px}
+.extra-small .club-info .club-info-title i.activator{cursor:pointer}
+.extra-small .card-reveal{overflow:hidden!important}
+.extra-small .card-reveal .card-reveal-text{font-size:1.2em}
+/*! footer */
+footer.page-footer{margin-top:0!important;padding-bottom:20px}
+footer.page-footer .row{margin-bottom:0!important;padding:0 20px}
