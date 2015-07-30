@@ -3,40 +3,38 @@
  */
 module.exports = function (grunt) {
 
+    require('time-grunt')(grunt);
+
     grunt.initConfig({
         less: {
             dev: {
                 options: {
-                    paths: 'app/assets/styles',
+                    paths: 'client/assets/styles',
                     sourceMap: true,
                     sourceMapFileInline: true,
                     relativeUrls: true
                 },
-                /*
-                 list of files which will be compiled from LESS to CSS
-                 destination : source
-                 */
                 files: {
-                    'app/assets/styles/app.css': 'app/assets/styles/app.less'
+                    'client/assets/styles/app.css': 'client/assets/styles/app.less'
                 }
             }
         },
         cssmin: {
-            dev: {
+            dist: {
                 options: {
-                    keepBreaks: true,
-                    keepSpecialComments: '*',
+                    keepBreaks: false,
+                    keepSpecialComments: '0',
                     rebase: true,
-                    relativeTo: 'app/assets/styles',
-                    target: 'app/dist/css'
+                    relativeTo: 'client/assets/styles',
+                    target: 'public/assets/styles'
                 },
                 files: [
                     {
                         expand: true,
-                        cwd: 'app/assets/styles',
+                        cwd: 'client/assets/styles',
                         src: ['*.css'],
-                        dest: 'app/dist/css',
-                        ext: '.css'
+                        dest: 'public/assets/styles',
+                        ext: '.min.css'
                     }
                 ]
             }
@@ -44,13 +42,20 @@ module.exports = function (grunt) {
         watch: {
             livereload: {
                 options: {
-                    livereload: 1337
+                    livereload: true
                 },
-                files: ['app/dist/**/*']
+                files: [
+                    'client/assets/**/*',
+                    'client/app/*.js',
+                    'client/app/**/*.js',
+                    'client/*.html',
+                    'client/app/**/*/html',
+                    '!client/assets/**/*.less'
+                ]
             },
             less: {
-                files: ['app/assets/styles/*.less'],
-                tasks: ['less:dev', 'cssmin:dev']
+                files: ['client/assets/styles/*.less'],
+                tasks: ['less:dev']
             }
         },
         connect: {
@@ -59,7 +64,16 @@ module.exports = function (grunt) {
                     port: 8080,
                     protocol: 'http',
                     hostname: '127.0.0.1',
-                    base: ['app'],
+                    base: ['client'],
+                    livereload: true
+                }
+            },
+            prod: {
+                options: {
+                    port: 9090,
+                    protocol: 'http',
+                    hostname: '127.0.0.1',
+                    base: ['client'],
                     livereload: true
                 }
             }
@@ -67,6 +81,9 @@ module.exports = function (grunt) {
         open: {
             dev: {
                 path: 'http://localhost:8080'
+            },
+            prod: {
+                path: 'http://localhost:9090'
             }
         }
     });
@@ -77,9 +94,17 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-open');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-    grunt.registerTask('compile', ['less:dev', 'cssmin:dev']);
+    grunt.registerTask('compile', 'Compile application assets', function(target) {
+        if(target && target === 'dist') {
+            return grunt.task.run('less:dev', 'cssmin:dist');
+        }
 
-    grunt.registerTask('dev', ['connect:dev', 'open:dev', 'watch:less']);
+        grunt.task.run('less:dev');
+    });
+
+    grunt.registerTask('dev', ['compile:dev', 'connect:dev', 'open:dev', 'watch']);
+
+    grunt.registerTask('prod', ['compile:dist', 'connect:prod', 'open:prod', 'watch']);
 
     grunt.registerTask('default', ['dev']);
 
