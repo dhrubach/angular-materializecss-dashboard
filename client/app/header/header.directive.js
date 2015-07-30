@@ -35,7 +35,7 @@
 
     function TabListRenderComplete() {
         var config = {
-            restrict: 'E',
+            restrict: 'A',
             link: link
         };
 
