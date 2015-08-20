@@ -15,7 +15,6 @@
         vm.tabs = [];
         vm.tabClick = tabClick;
         vm.activeTab = '';
-        vm.isReady = false;
 
         activate();
 
@@ -47,8 +46,6 @@
                     'title': 'schedule'
                 }
             ];
-            vm.isReady = true;
-            $('ul.tabs').tabs();
         }
 
         function tabClick(state) {
@@ -58,7 +55,15 @@
 
             activateTab(selectedTab);
 
-            $state.go(selectedTab[0].state);
+            console.log($state.get());
+
+/*
+            $state.go(selectedTab[0].state).then(function(data) {
+                console.log(data);
+            }, function(reason) {
+                console.log(reason);
+            });
+*/
         }
 
         function activateTab(tab) {

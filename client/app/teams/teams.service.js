@@ -24,7 +24,7 @@
                 deferred.resolve(generateEPLTeams());
             }, 1000);
 
-            return deferred;
+            return deferred.promise;
         }
 
         function generateEPLTeams() {

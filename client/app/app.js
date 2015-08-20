@@ -9,17 +9,22 @@
 
     angular
         .module('materialDashboard')
-        .config(function($stateProvider) {
+        .config(function ($stateProvider) {
             $stateProvider
+                .state('main', {
+                    'abstract': true,
+                    'url': '',
+                    'template': '<ui-view />'
+                })
                 .state('main.teams', {
-                    'templateUrl': 'teams/teams.html',
+                    'url': 'teams',
+                    'templateUrl': 'app/teams/teams.card.html',
                     'controller': 'TeamsController',
-                    'controllerAs': 'vm',
-                    url: 'teams'
+                    'controllerAs': 'vm'
                 })
                 .state('main.table', {
-                    'templateUrl': 'league-table/league-table.html'
+                    'url': 'table',
+                    'templateUrl': 'app/league-table/league-table.html'
                 });
         });
-
 })();

@@ -50,7 +50,10 @@
                 <div class="col s12">
                     <ul class="grey lighten-3">
                         <li ng-repeat="tab in vm.tabs" class="tab col s3" tab-list-render-complete="">
-                            <a ng-class="{active: tab.id === vm.activeTab}" ng-click="vm.tabClick(tab.state)">{{tab.title}}</a>
+                            <a ng-class="{active: tab.id === vm.activeTab}"
+                               ui-sref="{{tab.state}}">
+                                {{tab.title}}
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -106,7 +109,7 @@
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="bower_components/materialize/dist/js/materialize.js"></script>
 <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
-<script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 
 <script type="text/javascript" src="app/app.js"></script>
 <script type="text/javascript" src="app/teams/teams.service.js"></script>

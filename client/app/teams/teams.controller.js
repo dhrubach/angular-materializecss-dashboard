@@ -23,7 +23,8 @@
                     if (data && angular.isArray(data)) {
                         vm.eplTeams.push(data);
                     }
-                }, function (reason) {
+                })
+                .catch(function (reason) {
                     console.log(reason);
                 });
         }
