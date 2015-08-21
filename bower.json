@@ -16,14 +16,15 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
-    "app/bower_components",
+    "client/bower_components",
     "test",
     "tests"
   ],
   "dependencies": {
     "angular": "~1.4.3",
     "materialize": "~0.97.0",
-    "jquery": "^2.1.x"
+    "jquery": "^2.1.x",
+    "angular-ui-router": "~0.2.15",
+    "ui-router-extras": "~0.0.14"
   }
 }
