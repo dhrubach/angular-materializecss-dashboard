@@ -1,0 +1,31 @@
+<header class="grey lighten-3">
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <ul class="grey lighten-3">
+                    <li ng-repeat="tab in tbc.tabs" class="tab col s3" tab-list-render-complete="">
+                        <a ui-sref-active="active" ui-sref="{{tab.state}}">
+                            {{tab.title}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="tab-content">
+    <div class="container">
+        <div class="section">
+            <div id="teams">
+                <div ui-view="teams"></div>
+            </div>
+            <div id="league-tables">
+                <div ui-view="tables"></div>
+            </div>
+            <div ui-view="news"></div>
+            <div ui-view="schedule"></div>
+            <div class="divider hide-on-med-and-down"></div>
+        </div>
+    </div>
+</section>

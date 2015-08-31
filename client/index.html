@@ -43,33 +43,8 @@
     </div>
 </section>
 
-<section class="page-cotent">
-    <header class="grey lighten-3" ng-controller="HeaderController as vm">
-        <div class="container">
-            <div class="row">
-                <div class="col s12">
-                    <ul class="grey lighten-3">
-                        <li ng-repeat="tab in vm.tabs" class="tab col s3" tab-list-render-complete="">
-                            <a ng-class="{active: tab.id === vm.activeTab}"
-                               ui-sref="{{tab.state}}">
-                                {{tab.title}}
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <section class="tab-content">
-        <div class="container">
-            <div class="section">
-                <div ui-view></div>
-                <div class="divider hide-on-med-and-down"></div>
-            </div>
-        </div>
-    </section>
-
+<section class="page-content">
+    <div ui-view></div>
 </section>
 
 <footer class="page-footer red lighten-1">
@@ -106,16 +81,18 @@
 </footer>
 
 <!-- Scripts -->
-<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
 <script type="text/javascript" src="bower_components/materialize/dist/js/materialize.js"></script>
-<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="bower_components/angular/angular.js"></script>
 <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script type="text/javascript" src="bower_components/ui-router-extras/release/ct-ui-router-extras.js"></script>
 
 <script type="text/javascript" src="app/app.js"></script>
 <script type="text/javascript" src="app/teams/teams.service.js"></script>
 <script type="text/javascript" src="app/teams/teams.controller.js"></script>
-<script type="text/javascript" src="app/header/header.controller.js"></script>
-<script type="text/javascript" src="app/header/header.directive.js"></script>
+<script type="text/javascript" src="app/tabs-section/tabs.controller.js"></script>
+<script type="text/javascript" src="app/tabs-section/tabs.directive.js"></script>
+<script type="text/javascript" src="app/league-table/league-table.controller.js"></script>
 
 </body>
 </html>

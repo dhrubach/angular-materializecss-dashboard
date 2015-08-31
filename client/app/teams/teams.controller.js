@@ -8,11 +8,13 @@
         .module('materialDashboard')
         .controller('TeamsController', TeamsController);
 
-    TeamsController.$inject = ['TeamsService'];
+    TeamsController.$inject = ['TeamsService', '$state'];
 
-    function TeamsController(TeamsService) {
-        var vm = this;
-        vm.eplTeams = [];
+    function TeamsController(TeamsService, $state) {
+        var tmc = this;
+
+        tmc.eplTeams = [];
+        tmc.currentTabState = $state.current.name;
 
         activate();
 
@@ -21,7 +23,7 @@
                 .getEPLTeams()
                 .then(function (data) {
                     if (data && angular.isArray(data)) {
-                        vm.eplTeams.push(data);
+                        tmc.eplTeams.push(data);
                     }
                 })
                 .catch(function (reason) {

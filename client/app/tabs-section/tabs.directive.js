@@ -52,6 +52,9 @@
                 if(!elem.parent().hasClass('tabs')) {
                     elem.parent().addClass('tabs');
                 }
+
+                //console.log('initializing directive...');
+
                 // initialize 'tabs' component
                 elem.parent().tabs();
             }
